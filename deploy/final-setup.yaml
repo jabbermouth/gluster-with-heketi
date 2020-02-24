@@ -1,0 +1,31 @@
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass
+metadata:
+  name: gluster-heketi
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: "http://10.99.134.187:8080"
+  restuser: "admin"
+  restuserkey: "heketi-admin"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: heketi-admin
+  namespace: default
+data:
+  # base64 encoded password. E.g.: echo -n "password" | base64
+  key: Tm92ZW1iZXJTaWx2ZXJBc3Ryb25hdXQ0Mzky
+type: kubernetes.io/glusterfs
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: heketi-user
+  namespace: default
+data:
+  # base64 encoded password. E.g.: echo -n "password" | base64
+  key: TGVtb25hZGVSb29mU2VuYXRlNTQ0Mw==
+type: kubernetes.io/glusterfs
