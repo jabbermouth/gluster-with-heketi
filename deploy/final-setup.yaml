@@ -7,3 +7,4 @@ parameters:
   resturl: "http://10.99.134.187:8080"
   restuser: "admin"
   restuserkey: "heketi-admin"
+allowVolumeExpansion: true
