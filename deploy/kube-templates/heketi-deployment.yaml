@@ -85,3 +85,5 @@ spec:
       - name: config
         secret:
           secretName: heketi-config-secret
+      nodeSelector:
+        kubernetes.io/os: linux
